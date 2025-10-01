@@ -1,72 +1,9 @@
 import React from 'react'
 
-const EditBilgi = ({edit,setEdit,putBilgiler}) => {
-
-    // babadan gelen edit={id:id,title:title,description:description}, ilgili inputlarda, sadece title sa title, desc. ise desc değiştirilip, save butonuna basınca database de güncellenmek için dededen putBilgiler çağrıldı, ve database e edit değişkeniyle yollandı, edit in içindeki id axios.put komutunda url nin yanında ihtiyaç
+const EditBilgi = () => {
   return (
-    <div
-      className="modal fade"
-      id="editModal"
-      tabIndex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h1 className="modal-title fs-5" id="exampleModalLabel">
-              Modal
-            </h1>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div className="modal-body">
-            <div className="mb-3">
-              <label htmlFor="title" className="form-label">
-                Title
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="title"
-                placeholder="Enter your title"
-                value={edit.title}
-                onChange={(e) => setEdit({ ...edit, title: e.target.value })}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="desc" className="form-label">
-                Description
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="desc"
-                placeholder="Enter your Description"
-                value={edit.description}
-                onChange={(e) => setEdit({ ...edit, description: e.target.value })}
-              />
-            </div>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-
-              onClick={()=>putBilgiler(edit)}
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    <div>EditBilgi</div>
+  )
 }
 
 export default EditBilgi
