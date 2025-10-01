@@ -36,7 +36,7 @@ setDesc("")
         </div>
 
         <div>
-          <label htmlFor="desc"></label>
+          <label htmlFor="desc">Description</label>
           <input
             id="desc"
             className="form-control"
