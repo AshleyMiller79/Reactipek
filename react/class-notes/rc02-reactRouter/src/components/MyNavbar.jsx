@@ -20,13 +20,13 @@ const MyNavbar = () => {
             </Link>
 
             <Link className="nav-link" to="/courses">
-              Courseds
+              Courses
             </Link>
             <Link className="nav-link" to="/contact">
               Contact
             </Link>
             <Link className="nav-link" to="/paths">
-              Link
+             Paths
             </Link>
 
             <Nav.Link target="blank" href="https://github.com/">
