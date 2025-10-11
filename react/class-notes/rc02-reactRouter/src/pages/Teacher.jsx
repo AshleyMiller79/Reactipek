@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Teacher = () => {
-
   const [people, setPeople] = useState([]);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
@@ -20,9 +23,9 @@ const Teacher = () => {
             <img
               src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${person.name}`}
               alt=""
-             
+              // onClick={()=>navigate(`/teacher/${person.id}`)}
 
-            
+              onClick={() => navigate(`/teacher/${person.id}`, { state: { person } })}
             />
 
             <h5>{person.name}</h5>

@@ -4,7 +4,7 @@ const ContactForm = () => {
   const [info, setInfo] = useState({
     name: "",
     email: "",
-    pass: "",
+    password: "",
   });
 
   const handleSubmit = (e) => {
@@ -15,7 +15,7 @@ const ContactForm = () => {
 setInfo({
   name: "",
   email: "",
-  pass: "",
+  password: "",
 });
 
   };
@@ -69,7 +69,7 @@ setInfo({
             className="form-control"
             id="password"
          
-             value={info.pass}
+             value={info.password}
             onChange={(e) =>
               setInfo({ ...info, [e.target.id]: e.target.value })
             }

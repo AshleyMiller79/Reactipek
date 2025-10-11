@@ -2,8 +2,12 @@ import React from "react";
 
 import data from "../data.js";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const CourseCard = () => {
+
+  const navigate=useNavigate()
+
   return (
     <Container>
       <Row>
@@ -22,7 +26,10 @@ const CourseCard = () => {
                   <Card.Text>
                    {text}
                   </Card.Text>
-                  <Button variant="primary">DETAILS</Button>
+                  <Button
+                  onClick={()=>navigate(`/courses/${name}`)}
+                  
+                   variant="primary">DETAILS</Button>
                 </Card.Body>
               </Card>
             </Col>
