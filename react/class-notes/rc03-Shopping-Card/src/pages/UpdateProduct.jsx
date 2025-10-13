@@ -1,12 +1,26 @@
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-
+import axios from "axios"
 
 
 const UpdateProduct = () => {
 
+  const{state:{urun}}=useLocation()
+
+const[editUrun,setUrun]=useState(urun)
+
+const navigate=useNavigate()
 
 
+const handleSubmit=async(e)=>{
+  e.preventDefault()
+await axios.put(`https://63f4e5583f99f5855db9e941.mockapi.io/products/${editUrun.id}`,editUrun);
 
+navigate("/products")
+
+
+}
 
 
   return (
@@ -17,7 +31,7 @@ const UpdateProduct = () => {
       >
         <h1 className="text-center">update Product</h1>
 
-        <form  className="p-2">
+        <form onSubmit={handleSubmit} className="p-2">
           <div className="mb-3">
             <label htmlFor="add-name" className="form-label">
               Product Name
@@ -26,8 +40,8 @@ const UpdateProduct = () => {
               type="text"
               className="form-control"
               name="name"
-              value={""}
-              
+              value={editUrun.name}
+              onChange={(e) => setUrun({ ...editUrun, name: e.target.value })}
               required
             />
           </div>
@@ -39,9 +53,9 @@ const UpdateProduct = () => {
               type="number"
               className="form-control"
               name="price"
-              value={""}
+              value={editUrun.price}
               required
-            
+              onChange={(e) => setUrun({ ...editUrun, price: e.target.value })}
             />
           </div>
           <div className="mb-3">
@@ -52,9 +66,9 @@ const UpdateProduct = () => {
               type="number"
               className="form-control"
               name="amount"
-              value={""}
+              value={editUrun.amount}
               required
-            
+              onChange={(e) => setUrun({ ...editUrun, amount: e.target.value })}
             />
           </div>
           <label htmlFor="add-image" className="form-label">
@@ -68,10 +82,10 @@ const UpdateProduct = () => {
               type="url"
               className="form-control"
               name="image"
-              value={""}
+              value={editUrun.image}
               aria-describedby="basic-addon3"
               required
-            
+              onChange={(e) => setUrun({ ...editUrun, image: e.target.value })}
             />
           </div>
           <div className="text-center">
