@@ -1,15 +1,16 @@
 import React from "react";
+import KullaniciProvider from "./context/KullaniciProvider";
 
-
+import GosterUsers from "./pages/GosterUsers";
 
 const App = () => {
 
 
   return (
  
-    <>
- app
-    </>
+    <KullaniciProvider>
+<GosterUsers/>
+    </KullaniciProvider>
   );
 };
 

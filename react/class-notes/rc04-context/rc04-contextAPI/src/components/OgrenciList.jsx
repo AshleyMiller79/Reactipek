@@ -4,13 +4,15 @@ import OgrenciItem from './OgrenciItem';
 const OgrenciList = () => {
   return (
     <div>
-      <img
-        src="https://gelecekegitimde.com/wp-content/uploads/2015/01/fft99_mf3019637.jpeg"
+      {/* <img
+        src="https://cdn.pixabay.com/photo/2024/10/13/14/30/boy-9117346_1280.jpg"
         alt=""
-      />
-      <h2 style={{textAlign:"center", background:"pink"}}>ÖĞRENCİ LİSTESİ</h2>
+      /> */}
+      <h2 style={{ textAlign: "center", background: "pink" }}>
+        ÖĞRENCİ LİSTESİ
+      </h2>
 
-<OgrenciItem/>
+      <OgrenciItem />
     </div>
   );
 }

@@ -5,6 +5,7 @@ const data = [
     email: "jason@mail.com",
     age: 23,
     color: "lightblue",
+   
   },
   {
     id: 2,
