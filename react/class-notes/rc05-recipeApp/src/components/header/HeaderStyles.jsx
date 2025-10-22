@@ -64,14 +64,3 @@ export const Button = styled.button`
   }
 `;
 
-export const Select = styled.select`
-  /* breakfast yazan select */
-  background-color: pink;
-
-  border-radius: 3px;
-  margin: 5px;
-  padding: 5px;
-  height: 3rem;
-  border: none;
-  font-size: 2rem;
-`;

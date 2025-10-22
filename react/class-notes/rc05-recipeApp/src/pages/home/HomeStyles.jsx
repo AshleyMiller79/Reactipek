@@ -7,6 +7,7 @@ export const MainContainer = styled.div`
   /* sığmayan taşsın düşsün */
   /* flex-direction: row; */
   justify-content: center;
+  
  
 `;
 

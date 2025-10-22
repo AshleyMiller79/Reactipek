@@ -29,8 +29,8 @@ export const Menu = styled.div`
     /* uzun yazı olurda taşarsa gizle (hamburgere dönüşünce)*/
     flex-direction: column;
 
-  
-    display: ${({ ackapa }) => (ackapa === true ? "flex" : "none")};
+  display: ${({osman})=>osman===true ? "flex":"none"};
+   /* osman yani open true geldiğinde yani hamburgere tıklandığında, linkler görünür olsun, görünürlerken, hamburgere de linklere de bastığımızda görünmemeleri gerekiyor */
 
     width: 100%;
   }
