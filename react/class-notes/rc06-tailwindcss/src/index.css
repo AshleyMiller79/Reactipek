@@ -1,0 +1,39 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/** element bazında default olarak vermek istediğimiz stilleri base layer'da veriyoruz */
+@layer base {
+ 
+  h5 {
+    /** apply methodu ile tailwind classlarını kullanabiliyoruz */
+    @apply mb-1 text-xl font-medium text-gray-900 ;
+  }
+  /* span{
+    @apply bg-red-200
+  } */
+}
+
+/** component/class bazında default olarak vermek istediğimiz stilleri components layer'da veriyoruz */
+@layer components {
+
+.btn-primary{
+    @apply inline-flex items-center px-4 py-2 text-sm font-medium text-center focus:ring-4 focus:outline-none bg-pembe hover:bg-pembe_hover focus:ring-blue-300 rounded
+}
+
+.btn-secondary{
+@apply inline-flex items-center px-4 py-2 bg-dark text-white
+text-sm font-medium text-center ml-2 rounded border border-orange-300 hover:bg-gray-300 focus:ring-4 focus:ring-yellow-200
+}
+
+
+
+.user-card{
+    @apply w-full bg-red-100 max-w-md border border-green-500
+
+    shadow rounded-lg
+}
+}
