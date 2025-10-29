@@ -1,11 +1,16 @@
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
- 
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
-import { toastBasarili } from "../helpers/ToastNotify";
+import { 
+   toastBasarili, toastBasarisiz } from "../helpers/ToastNotify";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContextt = createContext();
@@ -31,22 +36,72 @@ const AuthContext = ({ children }) => {
 
     navigate("/");
 
+    //? USERTAKİPTEN SONRA -----kullanıcı profilini güncellemek için kullanılan firebase metodu, login logout da userTakip sayesinde güncelleniyor ama register da isim güncellemesi yok, o da bu şekilde oluyor.alttakini yazmazsam (register ile girdiğimde) navbarda displayName i göremem. alttakini yazmazsam sadece google ile girersem görürüm
+updateProfile(auth.currentUser, {
+ displayName:displayName
+
+})
+  .then(() => {
    
+  })
+  .catch((error) => {
+  
+  });
+
 
   
   };
 
+  //! Login
+
+  const loginGiris = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password);
+
+    toastBasarili("login işlemi başarılı");
+
+    navigate("/");
+  };
+
+  //! Google ile giriş
+
+  const googleGiris = () => {
+    //?google hesaplarımıza erişme metodu
+    const provider = new GoogleAuthProvider();
+
+    //? açılır pencere ile giriş yapılması için firebase metodu
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        toastBasarili("google ile giriş başarılı");
+        console.log(result);
+
+        navigate("/");
+      })
+      .catch((error) => {
+        toastBasarisiz("google ile giriş hatalı");
+      });
+  };
+
+  //!çıkış
+
+  const cikis=()=>{
+
+
+signOut(auth)
+  .then(() => {
+   toastBasarili("çıkış başarılı")
+  })
+  .catch((error) => {
+  toastBasarisiz("çıkış başarısızdır")
+  });
+  }
  
-
-
-  
 
   //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu. bir kere çalıştır login logout takip eder.login ile bilgiler gelir bizde burada currentUser ın içine atarız, signout olunca bilgiler gider bizde currentUser ın içini güncelleriz (register ve logindeki email vs ye navbardan ulaşabilmek için). google ile giriş yapınca user ile displayname gelir ama email ile girecekseniz en üstte update kodunu firebase den çağırmalısınız.(userTakip)
 
   const userTakip = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // console.log(user);
+         console.log(user);
         setCurrentUser({
           email: user.email,
           displayName: user.displayName,
@@ -60,7 +115,7 @@ const AuthContext = ({ children }) => {
 
   return (
     <AuthContextt.Provider
-      value={{ createKullanici, currentUser }}
+      value={{ createKullanici, loginGiris, googleGiris,  currentUser,cikis }}
     >
       {children}
     </AuthContextt.Provider>

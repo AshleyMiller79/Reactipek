@@ -15,6 +15,8 @@ const handleSubmit=(e)=>{
 
   e.preventDefault()
   const displayName=`${firstName} ${lastName}`
+
+  
 createKullanici(email,password,displayName)
 
 }

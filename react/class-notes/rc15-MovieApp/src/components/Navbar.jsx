@@ -8,12 +8,16 @@ import {
 
 
 import avatar from "../assets/icons/avatar.png";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContextt } from "../context/AuthContext";
 
 
 
 export default function Navbar() {
 
-
+const{cikis,currentUser}=useContext(AuthContextt)
+console.log(currentUser);
 
   //tailwindui.com/components/preview adresinden navbar aldık ve navigation, mobile menu button, open, Disclosure.Panel sildik
   return (
@@ -24,13 +28,13 @@ export default function Navbar() {
       >
         <div className="mx-auto  px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
-            <a href="#" className="pr-2 text-2xl font-semibold" to="/">
+            <Link to="/" className="pr-2 text-2xl font-semibold">
               Movie App
-            </a>
+            </Link>
 
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               {/* kullanıcı giriş yaptıysa displayName ekranda görünsün */}
-              <h5 className="mr-2 capitalize ">{}</h5>
+              <h5 className="mr-2 capitalize ">{currentUser?.displayName}</h5>
 
               {/* Profile dropdown */}
               <Menu as="div" className="relative">
@@ -39,7 +43,7 @@ export default function Navbar() {
                     <span className="sr-only">Open user menu</span>
                     <img
                       alt=""
-                      src={ avatar }
+                      src={ currentUser?.photoURL || avatar }
                       className="h-8 w-8 rounded-full"
                       referrerPolicy="no-referrer"
                     />
@@ -51,27 +55,27 @@ export default function Navbar() {
                 >
                   <>
                     <MenuItem>
-                      <a
-                        href="#"
+                      <Link
+                        to="/register"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
                         Register
-                      </a>
+                      </Link>
                     </MenuItem>
                     <MenuItem>
-                      <a
-                        href="#"
+                      <Link
+                        to="/login"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
                         Login
-                      </a>
+                      </Link>
                     </MenuItem>
                   </>
 
                   <MenuItem>
                     <span
                       className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 cursor-pointer"
-                    
+                    onClick={()=>cikis()}
                     >
                       Log out
                     </span>
