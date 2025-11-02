@@ -1,9 +1,14 @@
+import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 
 
 
 
 const TodoList = () => {
+
+  const {yapilacaklar}=useSelector((state)=>state.todoReducer)
+
+console.log(yapilacaklar);
 
 
   return (
@@ -12,8 +17,8 @@ const TodoList = () => {
     {/* diziyi bastırmak için todoItem a git */}
 
 <div>
-{[].map(()=>(
-<TodoItem   />
+{yapilacaklar.map((item)=>(
+<TodoItem key={item.id}  item={item}/>
 
 ))}
 
